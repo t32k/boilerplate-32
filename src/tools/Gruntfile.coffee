@@ -115,31 +115,34 @@ module.exports = (grunt) ->
           relativeFontPath: '/files/font/'
 
   # Load the plugins.
-  grunt.loadNpmTasks 'grunt-kss'
-  grunt.loadNpmTasks 'grunt-sass'
-  grunt.loadNpmTasks 'grunt-csso'
-  grunt.loadNpmTasks 'grunt-csscomb'
-  grunt.loadNpmTasks 'grunt-webfont'
-  grunt.loadNpmTasks 'grunt-imageoptim'
-  grunt.loadNpmTasks 'grunt-spritesmith'
-  grunt.loadNpmTasks 'grunt-autoprefixer'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.loadNpmTasks 'grunt-contrib-csslint'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
+  plugins = [
+    'grunt-kss', 'grunt-sass'
+    'grunt-csso', 'grunt-csscomb'
+    'grunt-webfont', 'grunt-imageoptim'
+    'grunt-spritesmith', 'grunt-autoprefixer'
+    'grunt-contrib-connect', 'grunt-contrib-csslint'
+    'grunt-contrib-watch'
+  ]
+
+  grunt.loadNpmTasks plugin for plugin in plugins
 
   # Tasks.
-  grunt.registerTask 'default', ['develop']
-  grunt.registerTask 'develop', ['connect', 'watch']
-  grunt.registerTask 'typeset', [
-    'webfont', 'sass'
-    'autoprefixer'
-  ]
-  grunt.registerTask 'publish', [
-    'sass', 'autoprefixer'
-    'csslint', 'kss'
-  ]
-  grunt.registerTask 'build', [
-    'csslint', 'sass'
-    'autoprefixer', 'csso'
-    'imageoptim'
-  ]
+  tasks =
+    'default': ['develop']
+    'develop': ['connect', 'watch']
+    'typeset': [
+      'webfont', 'sass'
+      'autoprefixer'
+    ]
+    'publish': [
+      'sass', 'autoprefixer'
+      'csslint', 'kss'
+    ]
+    'build': [
+      'csslint', 'sass'
+      'autoprefixer', 'csso'
+      'imageoptim'
+    ]
+
+  grunt.registerTask taskName, task for taskName, task of tasks
+
